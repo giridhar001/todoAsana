@@ -1,0 +1,140 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/landingPage.css" %}">
+
+    <title>Todo</title>
+{% endblock %}   
+
+{% block body %}
+  <div class="container-div row">    
+  
+<!-- LEFTMOST-COLUMN   -->
+
+  	<div class="container-fluid col-sm-12 col-md-3 shadow leftmost-col">
+  		
+  		<div class="row">
+  			<div class="icon-col col-12">
+	  			<img class="page-logo shadow" src="{% static 'img/logo.jpg' %}">
+	  			<span class="section-header my-2 mx-1"><h3>To-Do</h3></span>
+  			</div>
+  		</div>
+
+  		<!-- <div class="row">
+  			<div class="col-3 px-0">
+  				<img class="page-logo" src="{% static 'img/logo.jpg' %}">
+  			</div>
+  			<div class="section-header col-9">
+  				<h3>To-Do</h3>
+  			</div>
+
+  		</div> -->
+
+  		<div class="leftmost-first-section row">
+  			<span class="green-section-header header-style">Filters</span>
+  			<span><i class="far fa-dot-circle"></i> Active Task</span>
+  			<span><i class="fas fa-award"></i> Assigned to me</span>
+  			<span><i class="fas fa-bookmark"></i> Upcoming</span>
+  			<span><i class="fas fa-calendar-times"></i> Overdue</span>
+  			<span><i class="fas fa-check"></i> Completed</span>
+  		</div>
+
+  		<div class="button-div mt-4">
+  			<button class="add-task-button">Add Task <i class="fas fa-plus"></i></button>
+  		</div>
+
+  	</div>
+
+<!-- MIDDLE-COLUMN -->
+
+  	<div class="col-sm-12 col-md-5  middle-col">
+
+  		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Find your task...">
+			<div class="input-group-append">
+			  <button class="btn btn-secondary" type="button">
+			    <i class="fa fa-search"></i>
+			  </button>
+			</div>
+		</div>
+		<div class="heading">
+			<strong><h3 class="section-header">Work</h3></strong>
+
+			<p class="lorem-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua.</p>
+		</div>
+
+		<div class="row">
+			<div class="col">
+
+				<div class="card">
+				  <div class="card-body row">
+				  	<div class="col-9">
+				  		<div class="row">
+				  			<div class="task-header col-12">First Line of the card</div>
+				  			<div class="col-12">Date of List</div>
+				  		</div>
+				  	</div>
+
+				  	<div class="col-3">
+				  		<span class="badge badge-primary">Active Task</span>
+				  	</div>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+
+  	</div>
+
+<!-- RIGHTMOST-COLUMN -->
+
+  	<div class="col-sm-12 col-md-4 shadow rightmost-col container-fluid">
+  		
+  		<div class="row">
+  			<div class="avatar-col col-12">
+	  			<span class="my-2"><i class="fas fa-bell"></i></span>
+	  			<img class="avatar shadow" src="{% static 'img/avatar.png' %}">
+  			</div>
+  		</div>
+
+  		<div class="rightmost-heading">
+			<strong><h5 class="right-section-header">Send UI/UX Presentation Mail</h5></strong>
+			<span class="date-para">20 Apr,2021</span>
+			<span class="badge badge-primary">Active Task</span>
+		</div>
+
+		<div class="rightmost-main-content">
+			<div class="summary-row">
+				<span><h5 class="right-section-header header-style">Summary</h5></span>
+				<span class="my-2"><i class="far fa-edit"></i></span>
+			</div>
+			
+			<p class="rightmost-sub-content my-4">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="inputGroup-sizing-default">Notes</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Add Note..." aria-label="Default" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+
+  	</div>
+  
+  </div>
+{% endblock %} 
+
+{% block script %}
+<!-- 	<script src="{% static 'js/csrf.js' %}"></script>
+	<script src="{% static 'js/createNew.js' %}"></script>
+ -->
+{% endblock %}
