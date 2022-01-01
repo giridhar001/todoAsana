@@ -12,7 +12,7 @@
   
 <!-- LEFTMOST-COLUMN   -->
 
-  	<div class="container-fluid col-sm-12 col-md-3 shadow leftmost-col">
+  	<div class="container-fluid col-sm-12 col-md-3 shadow-lg leftmost-col">
   		
   		<div class="row">
   			<div class="icon-col col-12">
@@ -41,14 +41,38 @@
   		</div>
 
   		<div class="button-div mt-4">
-  			<button class="add-task-button">Add Task <i class="fas fa-plus"></i></button>
+  			<button class="add-task-button" onclick="check()" data-bs-toggle="modal" data-bs-target="#exampleModal"onclick="">Add Task <i class="fas fa-plus"></i></button>
   		</div>
+
+
+
+<!-- ----------------------------------------- -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Todo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="todo-name" placeholder="Todo name ...">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="saveTodo()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ---------------------------------------------- -->
 
   	</div>
 
 <!-- MIDDLE-COLUMN -->
 
-  	<div class="col-sm-12 col-md-5  middle-col">
+  	<div class="col-sm-12 col-md-5 shadow-sm middle-col">
 
   		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Find your task...">
@@ -65,26 +89,70 @@
 			tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>
 
+		{% for oneResponse in response %}
 		<div class="row">
-			<div class="col">
+			<div class="col mt-2">
 
 				<div class="card">
 				  <div class="card-body row">
 				  	<div class="col-9">
 				  		<div class="row">
-				  			<div class="task-header col-12">First Line of the card</div>
-				  			<div class="col-12">Date of List</div>
+				  			<div class="task-header col-12">{{ oneResponse.name }}</div>
+				  			<div class="col-12">{{ oneResponse.created_at }}</div>
 				  		</div>
 				  	</div>
 
 				  	<div class="col-3">
-				  		<span class="badge badge-primary">Active Task</span>
+				  		<div class="row">
+				  			<div class="col-12">
+				  				{% if oneResponse.completed == False %}
+						  		<span class="badge badge-primary">Active Task</span>
+						  		{% else %}
+						  		<span class="badge completed-badge">Completed Task</span>
+						  		{% endif %}
+				  			</div>
+
+				  			<div class="col-12">
+										<span class="my-2" id="{{ oneResponse.gid }}" onclick="triggerModal({{ oneResponse.gid }})" data-bs-toggle="modal" data-bs-target="#editModal"><i class="far fa-edit"></i></span>
+
+										<span class="my-2 mx-4" id="{{ oneResponse.gid }}" onclick="deleteTodo({{ oneResponse.gid }})"><i class="fas fa-trash"></i></i></span>
+				  			</div>
+				  		</div>
+				  		
 				  	</div>
 				  </div>
 				</div>
 
 			</div>
+
 		</div>
+
+		{% endfor %}
+
+
+		<!-- ----------------------------------------- -->
+
+		<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Edit Todo</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <input type="text" class="form-control" id="edit-todo-name" placeholder="Todo name ...">
+		      </div>
+		      <div class="modal-footer" id="edit-modal-footer">
+		      	<!-- <button type="button" class="btn btn-primary">sdf</button> -->
+		        <!-- <button type="button" class="btn btn-primary" onclick="edit()">Save</button> -->
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+		<!-- ---------------------------------------------- -->
+
 
   	</div>
 
@@ -131,10 +199,10 @@
   	</div>
   
   </div>
+
 {% endblock %} 
 
 {% block script %}
-<!-- 	<script src="{% static 'js/csrf.js' %}"></script>
-	<script src="{% static 'js/createNew.js' %}"></script>
- -->
+	<script src="{% static 'js/todo.js' %}"></script>
+
 {% endblock %}
